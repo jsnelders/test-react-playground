@@ -4,10 +4,10 @@ import React, { Component } from 'react';
 
 //-- Components
 import Hello from './Hello';
-import TodoList from './todo-list';
-import NewTodoForm from './new-todo-form';
-import ShowSum from './show-sum';
-import TestChild from './test-child';
+import TodoList from './TodoList';
+import CreateTodoItem from './CreateTodoItem';
+import ShowSum from './ShowSum';
+import TestChild from './TestChild';
 
 
 
@@ -111,7 +111,7 @@ export default class App extends Component
   {
     return (
       <div>
-        <Hello name={this.state.name} />
+        <Hello name={this.state.firstName} />
 
         <div className="counterClicker" onClick={this.onCounterClick}>This div has been clicked {this.clickCcounter} times [{this.state.firstName} {this.state.lastName} in {this.state.location}].</div>
         
@@ -134,7 +134,7 @@ export default class App extends Component
         <h1>TODO App</h1>
 
         <h3>New Task</h3>
-        <NewTodoForm taskForm={this.taskForm} taskAuthor={this.taskAuthor} updateParentComponent={this.onAddNewTask} />
+        <CreateTodoItem taskForm={this.taskForm} taskAuthor={this.taskAuthor} updateParentComponent={this.onAddNewTask} />
 
         <h3>My Tasks</h3>
         <TodoList items={this.todoItems} />

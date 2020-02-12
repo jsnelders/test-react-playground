@@ -4,7 +4,7 @@ import React from 'react';
  * A component with no data (props) pass in.
  */
 
-export default class NewTodoForm extends React.Component 
+export default class CreateTodoItem extends React.Component 
 {
   constructor(props)  //taskForm, taskAuthor, updateParentComponent
   {
