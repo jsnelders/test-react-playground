@@ -8,24 +8,32 @@ import React from 'react';
  * Note the braces - "{" and "}" - enclosing the parameters.
  * 
  * But using a Class-based component is easier for event handlers....?
+ * Nope. I was just being a crap programmer.
  */
-export default function TodoList1( {items} )
+export default function TodoList( {items} )
 {
   let taskNumber = 0;
 
+
   const listItems = items.map((item) => {
       taskNumber++;
+      let id = taskNumber;  // If you don't do this then the last value of taskNumber is assigned ot all list items.
+
       return (
-        <li>{taskNumber}. {item} 
-        <input type="button" value="X" title="Remove" onClick={onRemove} /></li>
+        <li key={taskNumber}>
+          # {taskNumber}. {item} 
+          <input type="button" value="X" title="Remove" 
+          onClick={ (e) => {onRemove(e, id.toString())} } 
+          />
+        </li>
       )
     }
   );
 
 
 
-  function onRemove(taskNumber) {
-    console.log("Removing...", taskNumber);
+  function onRemove(event, taskNumber) {
+    console.log("Removing task: ", taskNumber);
   }
 
 
@@ -40,7 +48,13 @@ export default function TodoList1( {items} )
 
 
 
-export default class TodoList extends React.Component 
+
+
+
+
+
+// Change to "class TodoList extends React.Component" to use this version.
+class TodoList extends React.Component 
 {
   constructor(props)
   {
@@ -56,9 +70,7 @@ export default class TodoList extends React.Component
 
 
   onRemove(event, id) {
-    //console.log("Removing...", event.target.name);
-    //console.log("Removing...", event.target.attributes["taskid"]);
-    console.log("Removing...", id, event.target);
+    console.log("Removing...", id, event.target.name);
   }
 
 
@@ -72,9 +84,12 @@ export default class TodoList extends React.Component
         let id = taskNumber;  // If you don't do this then the last value of taskNumber is assigned ot all list items.
         
         return (
-          <li>{taskNumber}. {item} 
-          <input type="button" name={taskNumber} value="X" title="Remove" 
-            onClick={ (e) => {this.onRemove(e, id.toString())} } /></li>
+          <li key={taskNumber}>
+            {taskNumber}. {item} 
+            <input type="button" name={taskNumber} value="X" title="Remove" 
+              onClick={ (e) => {this.onRemove(e, id.toString())} } 
+            />
+          </li>
         )
       }
     );
@@ -87,3 +102,4 @@ export default class TodoList extends React.Component
   }
 
 }
+
