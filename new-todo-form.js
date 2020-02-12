@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * A component with no data (props) pass in.
+ */
 export default function NewTodoForm( )
 {
   return (
