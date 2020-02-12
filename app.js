@@ -7,6 +7,34 @@ import Hello from './Hello';
 import TodoList from './todo-list';
 import NewTodoForm from './new-todo-form';
 import ShowSum from './show-sum';
+import TestChild from './test-child';
+
+
+
+
+
+
+
+
+
+
+
+const Button = ({ iClicked }) => (
+  <button onClick={iClicked} type="button">
+    Toggle Show/Hide
+  </button>
+);
+
+
+
+
+
+
+
+
+
+
+
 
 
 export default class App extends Component 
@@ -29,6 +57,9 @@ export default class App extends Component
     ];
 
     this.clickCcounter = 0;
+
+    this.taskForm = "Big Form";
+    this.taskAuthor = "BRUCE!";
   }
 
 
@@ -54,6 +85,17 @@ export default class App extends Component
   }
 
 
+  toggleClickHandler = (data) => {
+    console.log("toggleClickHandler()", data);
+  }
+
+
+  toggleShowHide = () => {
+    console.log("toggleShowHide");
+  };
+
+
+
   /**
    * React method to render the component.
    */
@@ -71,11 +113,20 @@ export default class App extends Component
         <ShowSum a={'2'} />
         <ShowSum />
 
+
+        <hr />
+        TestChild<br />
+        <TestChild iClicked={this.toggleClickHandler} />
+
+        <br />
+        Button<br />
+        <Button iClicked={this.toggleShowHide} />
+
         <hr />
         <h1>TODO App</h1>
 
         <h3>New Task</h3>
-        <NewTodoForm />
+        <NewTodoForm taskForm={this.taskForm} taskAuthor={this.taskAuthor} />
 
         <h3>My Tasks</h3>
         <TodoList items={this.todoItems} />
@@ -85,3 +136,6 @@ export default class App extends Component
     );
   }
 }
+
+
+
