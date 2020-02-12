@@ -5,8 +5,8 @@ import { render } from 'react-dom';
 import App from './App';
 
 // Import styles
-import './style.css';
-import './main.scss';
+import './css/style.css';
+import './css/main.scss';
 
 // Render the application.
 render(<App />, document.getElementById('root'));

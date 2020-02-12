@@ -1,15 +1,16 @@
 import React from 'react';
 
 /**
- * A component with no data (props) pass in.
+ * A class-based component.
+ * We're using this to make it easier to work with state.
  */
-
 export default class CreateTodoItem extends React.Component 
 {
   constructor(props)  //taskForm, taskAuthor, updateParentComponent
   {
     super(props);
     
+    // "state" is an object expected by React (true?) that stores local state of a component.
     this.state = {
       task: "",
       due: ""
@@ -17,8 +18,9 @@ export default class CreateTodoItem extends React.Component
   }
 
 
+
   /**
-   * Handle user field input. Update the componet state/
+   * Handle user field input. Update the componet state.
    */
   onFieldChange = (event) => {
     this.setState({
@@ -39,6 +41,7 @@ export default class CreateTodoItem extends React.Component
 
     this.props.updateParentComponent(this.state);
   }
+
 
 
   render() {

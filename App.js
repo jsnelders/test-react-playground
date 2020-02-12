@@ -2,12 +2,15 @@
 import React, { Component } from 'react';
 
 
-//-- Components
-import Hello from './Hello';
-import TodoList from './TodoList';
-import CreateTodoItem from './CreateTodoItem';
-import ShowSum from './ShowSum';
-import TestChild from './TestChild';
+//-- Helpers and test components
+import Hello from './components/Hello';
+import ShowSum from './components/ShowSum';
+import TestChild from './components/TestChild';
+
+
+//-- Todo List components
+import TodoList from './todo/TodoList';
+import CreateTodoItem from './todo/CreateTodoItem';
 
 
 
@@ -19,6 +22,8 @@ import TestChild from './TestChild';
 
 
 
+
+//-- Define a "Button" component.
 const Button = ({ iClicked }) => (
   <button onClick={iClicked} type="button">
     Toggle Show/Hide
@@ -36,7 +41,9 @@ const Button = ({ iClicked }) => (
 
 
 
-
+/**
+ * The main application component
+ */
 export default class App extends Component 
 {
   constructor() 
