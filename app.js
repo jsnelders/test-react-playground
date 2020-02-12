@@ -96,6 +96,14 @@ export default class App extends Component
 
 
 
+  onAddNewTask = (data) => {
+    console.log("onAddNewTask()", data);
+  };
+
+  
+
+
+
   /**
    * React method to render the component.
    */
@@ -126,7 +134,7 @@ export default class App extends Component
         <h1>TODO App</h1>
 
         <h3>New Task</h3>
-        <NewTodoForm taskForm={this.taskForm} taskAuthor={this.taskAuthor} />
+        <NewTodoForm taskForm={this.taskForm} taskAuthor={this.taskAuthor} updateParentComponent={this.onAddNewTask} />
 
         <h3>My Tasks</h3>
         <TodoList items={this.todoItems} />
