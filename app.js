@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Hello from './Hello';
 import TodoList from './todo-list';
 import NewTodoForm from './new-todo-form';
+import ShowSum from './show-sum';
 
 
 export default class App extends Component 
@@ -64,6 +65,12 @@ export default class App extends Component
 
         <div className="counterClicker" onClick={this.onCounterClick}>This div has been clicked {this.clickCcounter} times [{this.state.firstName} {this.state.lastName} in {this.state.location}].</div>
         
+        <hr/>
+        <ShowSum a={1} b={2} />
+        <ShowSum a={'2'} b={'2'} />
+        <ShowSum a={'2'} />
+        <ShowSum />
+
         <hr />
         <h1>TODO App</h1>
 
