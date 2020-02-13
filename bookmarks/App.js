@@ -2,35 +2,10 @@
 import React, { Component } from 'react';
 
 
-//-- Helpers and test components
-import Hello from './components/Hello';
-import ShowSum from './components/ShowSum';
-import TestChild from './components/TestChild';
-
-
-
-
-
-
-
-
-
-
-
-
-//-- Define a "Button" component.
-const Button = ({ iClicked }) => (
-  <button onClick={iClicked} type="button">
-    Toggle Show/Hide
-  </button>
-);
-
-
-
-
-
-
-
+//-- Todo List components
+import AddBookmark from './AddBookmark';
+import BookmarksList from './BookmarksList';
+import EditBookmark from './EditBookmark';
 
 
 
@@ -113,26 +88,11 @@ export default class App extends Component
   {
     return (
       <div>
-        <Hello name={this.state.firstName} />
+        <h3>New Bookmark</h3>
+        <AddBookmark taskForm={this.taskForm} taskAuthor={this.taskAuthor} updateParentComponent={this.onAddNewTask} />
 
-        <div className="counterClicker" onClick={this.onCounterClick}>This div has been clicked {this.clickCcounter} times [{this.state.firstName} {this.state.lastName} in {this.state.location}].</div>
-        
-        <hr/>
-        <ShowSum a={1} b={2} />
-        <ShowSum a={'2'} b={'2'} />
-        <ShowSum a={'2'} />
-        <ShowSum />
-
-
-        <hr />
-        TestChild<br />
-        <TestChild iClicked={this.toggleClickHandler} />
-
-        <br />
-        Button<br />
-        <Button iClicked={this.toggleShowHide} />
-
-        <hr />
+        <h3>My Bookmarks</h3>
+        <BookmarksList items={this.todoItems} />
         
       </div>
 

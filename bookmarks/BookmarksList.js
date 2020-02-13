@@ -10,7 +10,7 @@ import React from 'react';
  * But using a Class-based component is easier for event handlers....?
  * Nope. I was just being a crap programmer.
  */
-export default function TodoList( {items} )
+export default function BookmarksList( {items} )
 {
   let taskNumber = 0;
 
