@@ -39,24 +39,31 @@ export default class CreateTodoItem extends React.Component
     event.preventDefault();
     console.log("onSubmitForm", this.state);
 
-    this.props.updateParentComponent(this.state);
+    this.props.onSubmitted(this.state);
   }
 
 
 
   render() {
-    return (<form>
-      taskForm: {this.props.taskForm}<br />
-      taskAuthor: {this.props.taskAuthor}<br />
-      
-      <br />
+    return (
+      <form>
+        <p>
+          CreatedBy: {this.props.taskCreatedBy}
+        </p>
 
-      <label>
-        Task: <input name="task" type="text" onChange={this.onFieldChange} />
+        <label>
+          Task: <input name="task" type="text" onChange={this.onFieldChange} />
+        </label>
         <br />
-        Due: <input name="due" type="text" onChange={this.onFieldChange} />
-      </label>
-      <input type="button" value="Add" onClick={this.onSubmitForm} />
-    </form>)
+
+        <label>
+          Due: <input name="due" type="text" onChange={this.onFieldChange} />
+        </label>
+
+        <div>
+          <input type="button" value="Add" onClick={this.onSubmitForm} />
+        </div>
+      </form>
+    )
   }
 }

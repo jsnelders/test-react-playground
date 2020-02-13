@@ -26,7 +26,7 @@ export default class App extends Component
     };
 
 
-    this.todoItems = [
+    this.bookmarks = [
       "Learn ES2015",
       "Learn Vue.js",
       "Watch some TV",
@@ -35,46 +35,16 @@ export default class App extends Component
 
     this.clickCcounter = 0;
 
-    this.taskForm = "Big Form";
-    this.taskAuthor = "BRUCE!";
+    this.taskConfig = {
+      createdBy: "Jason"
+    };
   }
 
 
 
 
-
-  /**
-   * Click event handler
-   */
-  onCounterClick =() => {
-
-    // Update state #1
-    this.setState({
-      clickCcounter: this.clickCcounter++
-    });
-
-
-    // Update state #2
-    var newState = {...this.state};
-    newState.firstName = "Bruce";     // Updating just one property. Leaving lastName.
-    newState.location = "Melbourne";  // Creating a new property now.
-    this.setState(newState);
-  }
-
-
-  toggleClickHandler = (data) => {
-    console.log("toggleClickHandler()", data);
-  }
-
-
-  toggleShowHide = () => {
-    console.log("toggleShowHide");
-  };
-
-
-
-  onAddNewTask = (data) => {
-    console.log("onAddNewTask()", data);
+  onAddNewBookmark = (data) => {
+    console.log("onAddNewBookmark()", data);
   };
 
   
@@ -89,10 +59,10 @@ export default class App extends Component
     return (
       <div>
         <h3>New Bookmark</h3>
-        <AddBookmark taskForm={this.taskForm} taskAuthor={this.taskAuthor} updateParentComponent={this.onAddNewTask} />
+        <AddBookmark taskCreatedBy={this.taskConfig.createdBy} onSubmitted={this.onAddNewBookmark} />
 
         <h3>My Bookmarks</h3>
-        <BookmarksList items={this.todoItems} />
+        <BookmarksList items={this.bookmarks} />
         
       </div>
 
