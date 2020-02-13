@@ -1,8 +1,33 @@
-.bookmark-list-item {
-  //color: red; //TODO: Not working yet.
+ul.bookmark-list
+{
+  margin: 10px;
 
+  list-style: none;
+  padding-left: 0;
+}
+
+li.bookmark-list-item 
+{
   .remove-button {
     margin-left: 20px;
     
+  }
+
+  .cc-row
+  {
+    display: flex;
+
+    .cc-left 
+    {
+      flex: 50%;
+      text-align: left;
+    }
+
+    .cc-right 
+    {
+      flex: 50%;
+
+      text-align: right;
+    }
   }
 }

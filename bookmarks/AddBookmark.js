@@ -60,7 +60,7 @@ export default class CreateTodoItem extends React.Component
             <label>URL:</label>
           </div>
           <div className="w3-col s8">
-            <input name="url" type="text" onChange={this.onFieldChange} />
+            <input name="url" type="text" className="w3-input" onChange={this.onFieldChange} />
           </div>
         </div>
 
@@ -69,7 +69,7 @@ export default class CreateTodoItem extends React.Component
           <label>Alternate Title (optional):</label>
           </div>
           <div className="w3-col s8">
-            <input name="alternateTile" type="text" onChange={this.onFieldChange}  />
+            <input name="alternateTile" type="text" className="w3-input" onChange={this.onFieldChange}  />
           </div>
         </div>
 
@@ -78,7 +78,7 @@ export default class CreateTodoItem extends React.Component
           <label>Details: </label>
           </div>
           <div className="w3-col s8">
-            <textarea name="details" type="text" onChange={this.onFieldChange}></textarea>
+            <textarea name="details" type="text" className="w3-input" onChange={this.onFieldChange}></textarea>
           </div>
         </div>
 
