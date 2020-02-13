@@ -6,14 +6,15 @@ import React from 'react';
  */
 export default class CreateTodoItem extends React.Component 
 {
-  constructor(props)  //taskForm, taskAuthor, updateParentComponent
+  constructor(props)
   {
     super(props);
     
     // "state" is an object expected by React (true?) that stores local state of a component.
     this.state = {
-      task: "",
-      due: ""
+      url: "",
+      alternateTile: "",
+      details: ""
     };
   }
 
@@ -24,7 +25,9 @@ export default class CreateTodoItem extends React.Component
    */
   onFieldChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value // Set the state value for a corresponding form field's "name".
+
+      // Set the state value for a corresponding form field's "name".
+      [event.target.name]: event.target.value
     });
 
     console.log("onFieldChange", this.state);
@@ -37,6 +40,7 @@ export default class CreateTodoItem extends React.Component
    */
   onSubmitForm = (event) => {
     event.preventDefault();
+
     console.log("onSubmitForm", this.state);
 
     this.props.onSubmitted(this.state);
@@ -46,26 +50,45 @@ export default class CreateTodoItem extends React.Component
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.onSubmitForm}>
         <p>
           CreatedBy: {this.props.taskCreatedBy}
         </p>
 
-        <label>
-          URL: <input name="url" type="text" onChange={this.onFieldChange} />
-        </label>
-        <br />
+        <div className="w3-row">
+          <div className="w3-col s4">
+            <label>URL:</label>
+          </div>
+          <div className="w3-col s8">
+            <input name="url" type="text" onChange={this.onFieldChange} />
+          </div>
+        </div>
 
-        <label>
-          Alternate Title (optional): <input name="due" type="text" onChange={this.onFieldChange} />
-        </label>
-        <br />
-        <label>
-          Details: <textarea name="details" type="text" onChange={this.onFieldChange}></textarea>
-        </label>
+        <div className="w3-row">
+          <div className="w3-col s4">
+          <label>Alternate Title (optional):</label>
+          </div>
+          <div className="w3-col s8">
+            <input name="alternateTile" type="text" onChange={this.onFieldChange}  />
+          </div>
+        </div>
 
-        <div>
-          <input type="button" value="Create" onClick={this.onSubmitForm} />
+        <div className="w3-row">
+          <div className="w3-col s4">
+          <label>Details: </label>
+          </div>
+          <div className="w3-col s8">
+            <textarea name="details" type="text" onChange={this.onFieldChange}></textarea>
+          </div>
+        </div>
+
+        <div className="w3-row">
+          <div className="w3-col s4">
+            &nbsp;
+          </div>
+          <div className="w3-col s8">
+            <input type="submit" value="Create Bookmark" />
+          </div>
         </div>
       </form>
     )

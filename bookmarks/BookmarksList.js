@@ -96,10 +96,18 @@ class TodoList extends React.Component
         
         return (
           <li key={taskNumber} className="bookmark-list-item">
-            {taskNumber}. {item} 
-            <input className="remove-button" type="button" name={taskNumber} value="X" title="Remove" 
-              onClick={ (e) => {this.onRemove(e, id.toString())} } 
-            />
+
+            <div className="w3-row">
+              <div className="w3-col s10">
+                {taskNumber}. {item}
+              </div>
+              <div className="w3-col s2 w3-right-align">
+                <input className="remove-button" type="button" name={taskNumber} value="X" title="Remove" 
+                  onClick={ (e) => {this.onRemove(e, id.toString())} } 
+                />
+              </div>
+            </div>
+            
           </li>
         )
       }
