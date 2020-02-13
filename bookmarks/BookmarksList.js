@@ -22,10 +22,10 @@ export default function BookmarksList( {items} )
       let taskCopy = taskNumber;  // If you don't do this then the last value of taskNumber is assigned ot all list items.
 
       return (
-        <li key={taskNumber}>
+        <li className="bookmark-list-item" key={taskNumber}>
           {item.id}. {getTitle(item.title, item.alternateTitle)} - 
           <a href={item.url}>{item.url}</a> 
-          <input type="button" value="X" title="Remove" onClick={ (e) => {onRemove(e, item.id)} } 
+          <input className="remove-button" type="button" value="X" title="Remove" onClick={ (e) => {onRemove(e, item.id)} } 
           />
         </li>
       )
