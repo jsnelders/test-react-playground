@@ -27,10 +27,36 @@ export default class App extends Component
 
 
     this.bookmarks = [
-      "Learn ES2015",
-      "Learn Vue.js",
-      "Watch some TV",
-      "Oh yeah, learn React",
+      {
+        id: 1,
+        url: "https://jsnelders.com/",
+        title: "",
+        alternateTitle: "Jason's Site",
+        details: "Well, it's my site."
+      },
+      {
+        id: 2,
+        url: "https://jasonsnelders.dev/",
+        title: "",
+        alternateTitle: "My Profile",
+        details: ""
+      }
+      ,
+      {
+        id: 3,
+        url: "https://bitwarden.com/",
+        title: "",
+        alternateTitle: "",
+        details: ""
+      }
+      ,
+      {
+        id: 4,
+        url: "https://reactjs.org/",
+        title: "",
+        alternateTitle: "",
+        details: ""
+      }
     ];
 
     this.clickCcounter = 0;

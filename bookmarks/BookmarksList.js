@@ -16,14 +16,17 @@ export default function BookmarksList( {items} )
 
 
   const listItems = items.map((item) => {
+      
+      //TODO: Obsolete, but showing that you need to copy the value.
       taskNumber++;
-      let id = taskNumber;  // If you don't do this then the last value of taskNumber is assigned ot all list items.
+      let taskCopy = taskNumber;  // If you don't do this then the last value of taskNumber is assigned ot all list items.
 
       return (
         <li key={taskNumber}>
-          # {taskNumber}. {item} 
+          {item.id}. {getTitle(item.title, item.alternateTitle)} - 
+          <a href={item.url}>{item.url}</a> 
           <input type="button" value="X" title="Remove" 
-          onClick={ (e) => {onRemove(e, id.toString())} } 
+          onClick={ (e) => {onRemove(e, item.id)} } 
           />
         </li>
       )
@@ -34,6 +37,15 @@ export default function BookmarksList( {items} )
 
   function onRemove(event, taskNumber) {
     console.log("Removing task: ", taskNumber);
+  }
+
+
+  function getTitle(title, alternateTitle)
+  {
+    if (title) return title;
+    if (alternateTitle) return alternateTitle;
+
+    return "(untitled)";
   }
 
 

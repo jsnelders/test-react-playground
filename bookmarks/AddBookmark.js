@@ -52,16 +52,20 @@ export default class CreateTodoItem extends React.Component
         </p>
 
         <label>
-          Task: <input name="task" type="text" onChange={this.onFieldChange} />
+          URL: <input name="url" type="text" onChange={this.onFieldChange} />
         </label>
         <br />
 
         <label>
-          Due: <input name="due" type="text" onChange={this.onFieldChange} />
+          Alternate Title (optional): <input name="due" type="text" onChange={this.onFieldChange} />
+        </label>
+        <br />
+        <label>
+          Details: <textarea name="details" type="text" onChange={this.onFieldChange}></textarea>
         </label>
 
         <div>
-          <input type="button" value="Add" onClick={this.onSubmitForm} />
+          <input type="button" value="Create" onClick={this.onSubmitForm} />
         </div>
       </form>
     )
