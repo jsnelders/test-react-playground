@@ -25,8 +25,7 @@ export default function BookmarksList( {items} )
         <li key={taskNumber}>
           {item.id}. {getTitle(item.title, item.alternateTitle)} - 
           <a href={item.url}>{item.url}</a> 
-          <input type="button" value="X" title="Remove" 
-          onClick={ (e) => {onRemove(e, item.id)} } 
+          <input type="button" value="X" title="Remove" onClick={ (e) => {onRemove(e, item.id)} } 
           />
         </li>
       )
@@ -96,9 +95,9 @@ class TodoList extends React.Component
         let id = taskNumber;  // If you don't do this then the last value of taskNumber is assigned ot all list items.
         
         return (
-          <li key={taskNumber}>
+          <li key={taskNumber} className="bookmark-list-item">
             {taskNumber}. {item} 
-            <input type="button" name={taskNumber} value="X" title="Remove" 
+            <input className="remove-button" type="button" name={taskNumber} value="X" title="Remove" 
               onClick={ (e) => {this.onRemove(e, id.toString())} } 
             />
           </li>

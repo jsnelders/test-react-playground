@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 // The root of the React app
 //import App from './App';
 import App from './bookmarks/App';
+import './bookmarks/styles.scss';
 
 // Import styles
 import './css/style.css';
