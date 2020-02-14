@@ -23,13 +23,14 @@ export default function BookmarksList( {items} )
 
       return (
         <li className="bookmark-list-item" key={taskNumber}>
-            <div className="cc-row" style={{'margin-top': '0'}}>
+            <div className="cc-row">
               <div className="cc-col cc-left">{item.id}. {getTitle(item.title, item.alternateTitle)}<br />
                 <small><a href={item.url}>{item.url}</a></small>
               </div>
               <div className="cc-col cc-right">
-                <input className="remove-button" type="button" value="X" title="Remove" onClick={ (e) => {onRemove(e, item.id)} } 
-                />
+                <button className="remove-button w3-tiny" type="button" value="X" title="Remove" onClick={ (e) => {onRemove(e, item.id)} } >
+                <i class="fas fa-trash"></i>
+                </button>
               </div>
             </div>
         </li>

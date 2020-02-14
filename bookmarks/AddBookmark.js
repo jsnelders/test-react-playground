@@ -30,7 +30,7 @@ export default class CreateTodoItem extends React.Component
       [event.target.name]: event.target.value
     });
 
-    console.log("onFieldChange", this.state);
+    //console.log("onFieldChange", this.state);
   }
 
 
@@ -41,7 +41,7 @@ export default class CreateTodoItem extends React.Component
   onSubmitForm = (event) => {
     event.preventDefault();
 
-    console.log("onSubmitForm", this.state);
+    // console.log("onSubmitForm", this.state);
 
     this.props.onSubmitted(this.state);
   }
@@ -50,45 +50,45 @@ export default class CreateTodoItem extends React.Component
 
   render() {
     return (
-      <form onSubmit={this.onSubmitForm}>
-        <p>
-          CreatedBy: {this.props.taskCreatedBy}
-        </p>
-
-        <div className="w3-row">
+      <form onSubmit={this.onSubmitForm} className="w3-card w3-padding">
+        <div className="w3-row w3-margin-bottom">
           <div className="w3-col s4">
-            <label>URL:</label>
+            <label>URL</label>
           </div>
           <div className="w3-col s8">
-            <input name="url" type="text" className="w3-input" onChange={this.onFieldChange} />
+            <input name="url" type="text" className="w3-input w3-border" onChange={this.onFieldChange} />
           </div>
         </div>
 
-        <div className="w3-row">
+        <div className="w3-row w3-margin-bottom">
           <div className="w3-col s4">
-          <label>Alternate Title (optional):</label>
+            <label>Alternate Title<br /><small>(optional)</small></label>
           </div>
           <div className="w3-col s8">
-            <input name="alternateTile" type="text" className="w3-input" onChange={this.onFieldChange}  />
+            <input name="alternateTile" type="text" className="w3-input w3-border" onChange={this.onFieldChange}  />
           </div>
         </div>
 
-        <div className="w3-row">
+        <div className="w3-row w3-margin-bottom">
           <div className="w3-col s4">
-          <label>Details: </label>
+          <label>Details</label>
           </div>
           <div className="w3-col s8">
-            <textarea name="details" type="text" className="w3-input" onChange={this.onFieldChange}></textarea>
+            <textarea name="details" type="text" className="w3-input w3-border" onChange={this.onFieldChange}></textarea>
           </div>
         </div>
 
-        <div className="w3-row">
+        <div className="w3-row w3-margin-bottom">
           <div className="w3-col s4">
             &nbsp;
           </div>
           <div className="w3-col s8">
-            <input type="submit" value="Create Bookmark" />
+            <input className="w3-btn w3-white w3-border w3-border-blue w3-round" type="submit" value="Create Bookmark" />
           </div>
+        </div>
+
+        <div style={{textAlign: "right"}}>
+          CreatedBy: {this.props.taskCreatedBy}
         </div>
       </form>
     )

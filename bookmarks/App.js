@@ -22,42 +22,41 @@ export default class App extends Component
 
     this.state = {
       firstName: 'Jason',
-      lastName: 'Snelders'
+      lastName: 'Snelders',
+
+      bookmarks: [
+        {
+          id: 1,
+          url: "https://jsnelders.com/",
+          title: "",
+          alternateTitle: "Jason's Site",
+          details: "Well, it's my site."
+        },
+        {
+          id: 2,
+          url: "https://jasonsnelders.dev/",
+          title: "",
+          alternateTitle: "My Profile",
+          details: ""
+        }
+        ,
+        {
+          id: 3,
+          url: "https://bitwarden.com/",
+          title: "",
+          alternateTitle: "",
+          details: ""
+        }
+        ,
+        {
+          id: 4,
+          url: "https://reactjs.org/",
+          title: "",
+          alternateTitle: "",
+          details: ""
+        }
+      ]
     };
-
-
-    this.bookmarks = [
-      {
-        id: 1,
-        url: "https://jsnelders.com/",
-        title: "",
-        alternateTitle: "Jason's Site",
-        details: "Well, it's my site."
-      },
-      {
-        id: 2,
-        url: "https://jasonsnelders.dev/",
-        title: "",
-        alternateTitle: "My Profile",
-        details: ""
-      }
-      ,
-      {
-        id: 3,
-        url: "https://bitwarden.com/",
-        title: "",
-        alternateTitle: "",
-        details: ""
-      }
-      ,
-      {
-        id: 4,
-        url: "https://reactjs.org/",
-        title: "",
-        alternateTitle: "",
-        details: ""
-      }
-    ];
 
     this.clickCcounter = 0;
 
@@ -70,7 +69,21 @@ export default class App extends Component
 
 
   onAddNewBookmark = (data) => {
-    console.log("onAddNewBookmark()", data);
+    //console.log("onAddNewBookmark()", data);
+
+    // Update state with the new bookmark.
+    //var [bookmarks] = {...this.state.bookmarks};
+    var bookmarks = this.state.bookmarks;
+
+    //console.log("onAddNewBookmark(): bookmarks=", bookmarks);
+
+    data.id = new Date().getTime();
+    bookmarks.push(data);
+    this.setState({
+      bookmarks: bookmarks
+    });
+
+    //console.log("onAddNewBookmark(): state=", this.state);
   };
 
   
@@ -88,7 +101,7 @@ export default class App extends Component
         <AddBookmark taskCreatedBy={this.taskConfig.createdBy} onSubmitted={this.onAddNewBookmark} />
 
         <h3>My Bookmarks</h3>
-        <BookmarksList items={this.bookmarks} />
+        <BookmarksList items={this.state.bookmarks} />
         
       </div>
 
