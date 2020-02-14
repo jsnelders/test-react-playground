@@ -1,6 +1,7 @@
 //-- React library
 import React, { Component } from 'react';
 
+import Services from './Services'
 
 //-- Todo List components
 import AddBookmark from './AddBookmark';
@@ -21,9 +22,7 @@ export default class App extends Component
     super();
 
     this.state = {
-      firstName: 'Jason',
-      lastName: 'Snelders',
-
+      // The complete list of saved bookmarks.
       bookmarks: [
         {
           id: 1,
@@ -58,32 +57,47 @@ export default class App extends Component
       ]
     };
 
-    this.clickCcounter = 0;
-
-    this.taskConfig = {
+    // Some configuration values.
+    this.config = {
       createdBy: "Jason"
     };
   }
 
 
 
+  
 
+  /**
+   * Event hander for the @onSubmitted event of <AddBookmark>.  
+   * Add a new bookmark to the 'bookmarks' list.
+   * 
+   * @param {object} data - The form data containing the new bookmark fields.
+   */
   onAddNewBookmark = (data) => {
     //console.log("onAddNewBookmark()", data);
 
-    // Update state with the new bookmark.
-    //var [bookmarks] = {...this.state.bookmarks};
-    var bookmarks = this.state.bookmarks;
+    // Clone the existing bookmarks state to generate new state.
+    var newBookmarks = [...this.state.bookmarks];
 
-    //console.log("onAddNewBookmark(): bookmarks=", bookmarks);
+    // Generate an ID for the new bookmark.
+    const newID = Services.uuidv4();
 
-    data.id = new Date().getTime();
-    bookmarks.push(data);
+    // Clone the supplied form data.
+    // If we don't clone then subsequent calls will reference back to the same
+    // 'data' object and we end up with duplicate IDs.
+    let newBookmark = {...data};
+
+    // Add the new bookmark to the new state,
+    newBookmark.id = newID;
+    newBookmarks.push(newBookmark);
+
+    // Update the bookmark state.
     this.setState({
-      bookmarks: bookmarks
+      bookmarks: newBookmarks
     });
 
     //console.log("onAddNewBookmark(): state=", this.state);
+    //console.log("--------------------------------------------------");
   };
 
   
@@ -98,16 +112,11 @@ export default class App extends Component
     return (
       <div>
         <h3>New Bookmark</h3>
-        <AddBookmark taskCreatedBy={this.taskConfig.createdBy} onSubmitted={this.onAddNewBookmark} />
+        <AddBookmark taskCreatedBy={this.config.createdBy} onSubmitted={this.onAddNewBookmark} />
 
         <h3>My Bookmarks</h3>
         <BookmarksList items={this.state.bookmarks} />
-        
       </div>
-
     );
   }
 }
-
-
-

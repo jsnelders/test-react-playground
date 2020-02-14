@@ -16,16 +16,12 @@ export default function BookmarksList( {items} )
 
 
   const listItems = items.map((item) => {
-      
-      //TODO: Obsolete, but showing that you need to copy the value.
-      taskNumber++;
-      let taskCopy = taskNumber;  // If you don't do this then the last value of taskNumber is assigned ot all list items.
-
       return (
-        <li className="bookmark-list-item" key={taskNumber}>
+        <li className="bookmark-list-item" key={item.id}>
             <div className="cc-row">
-              <div className="cc-col cc-left">{item.id}. {getTitle(item.title, item.alternateTitle)}<br />
-                <small><a href={item.url}>{item.url}</a></small>
+              <div className="cc-col cc-left">{getTitle(item.title, item.alternateTitle)}<br />
+                <small><a href={item.url}>{item.url}</a></small><br />
+                <small>[ID: {item.id}]</small>
               </div>
               <div className="cc-col cc-right">
                 <button className="remove-button w3-tiny" type="button" value="X" title="Remove" onClick={ (e) => {onRemove(e, item.id)} } >
