@@ -23,46 +23,36 @@ export default class App extends Component
 
     this.state = {
       // The complete list of saved bookmarks.
-      bookmarks: [
-        {
-          id: 1,
-          url: "https://jsnelders.com/",
-          title: "",
-          alternateTitle: "Jason's Site",
-          details: "Well, it's my site."
-        },
-        {
-          id: 2,
-          url: "https://jasonsnelders.dev/",
-          title: "",
-          alternateTitle: "My Profile",
-          details: ""
-        }
-        ,
-        {
-          id: 3,
-          url: "https://bitwarden.com/",
-          title: "",
-          alternateTitle: "",
-          details: ""
-        }
-        ,
-        {
-          id: 4,
-          url: "https://reactjs.org/",
-          title: "",
-          alternateTitle: "",
-          details: ""
-        }
-      ]
+      bookmarks: []
     };
 
     // Some configuration values.
     this.config = {
       createdBy: "Jason"
     };
+
+    this.loadBookmarks();
   }
 
+
+  /**
+   * Load the bookmarks from the cache when the app loads.
+   */
+  loadBookmarks()
+  {
+    //-- NOTE This generates the following warning
+    //    Warning: Can't call setState on a component that is not yet mounted. 
+    //    This is a no-op, but it might indicate a bug in your application. 
+    //    Instead, assign to `this.state` directly or define a `state = {};` 
+    //    class property with the desired state in the App component.
+    //
+    // const newBookmarks = [...Services.getBookmarksList()];
+    // this.setState({
+    //   bookmarks: newBookmarks
+    // });
+    
+    this.state.bookmarks = Services.getBookmarksList();
+  }
 
 
   
@@ -98,7 +88,50 @@ export default class App extends Component
 
     //console.log("onAddNewBookmark(): state=", this.state);
     //console.log("--------------------------------------------------");
+
+    //NOTE: Passing in newBookmarks because allowing saveBookmarks()
+    //      to use this.state.bookmarks was not saving the complete list 
+    //      (I don't think state hade updated yet).
+    this.saveBookmarks(newBookmarks);
   };
+
+
+
+  /**
+   * Event hander for the @onItemRemoved event of <BookmarksList>.  
+   * Remove an item from the bookmarks list
+   * 
+   * @param {string} itemID - ID of the item to remove.
+   */
+  onItemRemoved = (itemID) => {
+    console.log("App.onItemRemoved() " + itemID);
+
+    const newBookmarks = this.state.bookmarks.filter(function( bookmark ) {
+        return bookmark.id !== itemID;
+    });
+
+    this.setState({
+      bookmarks: newBookmarks
+    });
+
+    this.saveBookmarks(newBookmarks);
+  }
+
+
+  /**
+   * Save the bookmarks list back to cache.
+   */
+  saveBookmarks(bookmarks = null)
+  {
+    if (bookmarks != null) 
+    {
+      Services.saveBookmarksList(bookmarks);
+    }
+    else
+    {
+      Services.saveBookmarksList(this.state.bookmarks);
+    }
+  }
 
   
 
@@ -115,7 +148,7 @@ export default class App extends Component
         <AddBookmark taskCreatedBy={this.config.createdBy} onSubmitted={this.onAddNewBookmark} />
 
         <h3>My Bookmarks</h3>
-        <BookmarksList items={this.state.bookmarks} />
+        <BookmarksList items={this.state.bookmarks} onItemRemoved={this.onItemRemoved} />
       </div>
     );
   }

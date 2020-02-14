@@ -10,7 +10,7 @@ import React from 'react';
  * But using a Class-based component is easier for event handlers....?
  * Nope. I was just being a crap programmer.
  */
-export default function BookmarksList( {items} )
+export default function BookmarksList( {items, onItemRemoved} )
 {
   let taskNumber = 0;
 
@@ -25,7 +25,7 @@ export default function BookmarksList( {items} )
               </div>
               <div className="cc-col cc-right">
                 <button className="remove-button w3-tiny" type="button" value="X" title="Remove" onClick={ (e) => {onRemove(e, item.id)} } >
-                <i class="fas fa-trash"></i>
+                <i className="fas fa-trash"></i>
                 </button>
               </div>
             </div>
@@ -36,8 +36,10 @@ export default function BookmarksList( {items} )
 
 
 
-  function onRemove(event, taskNumber) {
-    console.log("Removing task: ", taskNumber);
+  function onRemove(event, itemId) {
+    console.log("Removing item: ", itemId);
+
+    onItemRemoved(itemId);
   }
 
 
