@@ -66,7 +66,7 @@ export default class Services
         {
           id: 3,
           url: "https://bitwarden.com/",
-          title: "",
+          title: "Bitwarden Password Manager",
           alternateTitle: "",
           details: ""
         }
@@ -74,7 +74,7 @@ export default class Services
         {
           id: 4,
           url: "https://reactjs.org/",
-          title: "",
+          title: "React",
           alternateTitle: "",
           details: ""
         }
