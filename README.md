@@ -1,3 +1,7 @@
+20 July 2021: Respository is now obsolete and archived.
+
+---
+
 # Rest React Playground
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/test-react-playground)
